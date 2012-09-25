@@ -1,7 +1,0 @@
-parameters:
-#    soap_client.example.class: SoapClient\SoapClientBundle\Example
-
-services:
-#    soap_client.example:
-#        class: %soap_client.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
