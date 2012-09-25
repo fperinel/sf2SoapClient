@@ -1,0 +1,107 @@
+<?php
+namespace ClassNamespace;
+
+use ArgNamespace\Type1;
+use ArgNamespace\Type2;
+use ExceptionNamespace\ExceptionType1;
+use ExceptionNamespace\ExceptionType2;
+use \ClassExtends;
+
+
+/**
+ * ClassService class
+ */
+class ClassService extends ClassExtends
+{
+
+  /**
+   * Default class map
+   * @access private
+   * @var array
+   */
+  private static $classmap = array(
+    "wsdlObj1" => "WsdlObj1",
+    "wsdlObj2" => "WsdlObj2",
+  );
+
+  /**
+   * ClassService constructor
+   *
+   * @param string $wsdl WSDL location for this service
+   * @param array $options Options for the SoapClient
+   *
+   * @return ClassService
+   */
+  public function __construct($wsdl = 'http://www.wsdl.example.fr', $options = array()) {
+    foreach (self::$classmap as $wsdlClassName => $phpClassName) {
+      if (!isset($options['classmap'][$wsdlClassName])) {
+        $options['classmap'][$wsdlClassName] = $phpClassName;
+      }
+    }
+    parent::__construct($wsdl, $options);
+  }
+
+  /**
+   * Return WSDL targetNamespace
+   *
+   * @return string
+   */
+  public function getTargetNamespace() {
+    return "http://www.wsdl.example.fr/targetnamespace";
+  }
+
+  /**
+   * Set a SOAP header
+   *
+   * @param string $key Key of header value
+   * @param mixed $value Value of header
+   */
+  public function setSoapHeader($key, $value = null) {
+    $soapHeader = new SoapHeader($this->getTargetNamespace(), $key, $value);
+    $this->__setSoapHeaders($soapHeader);
+  }
+
+  /**
+   * Set multiple SOAP headers
+   *
+   * @param array $header  Associative array with key/value
+   */
+  public function setSoapHeaders($headers = array()) {
+    $headers = array();
+    foreach ($headers as $key => $value) {
+      $headers[] = new SoapHeader($this->getTargetNamespace(), $key, $value);
+    }
+    $this->__setSoapHeaders($headers);
+  }
+
+  /**
+   * method1 method
+   *
+   * @param int $arg1
+   * @param Type1 $arg2
+   * @param Type2 $arg3
+   *
+   * @return void
+   *
+   * @throws ExceptionType1
+   * @throws ExceptionType2
+   */
+  public function method1($arg1, Type1 $arg2, Type2 $arg3) {
+    parent::__call('method1', func_get_args());
+  }
+
+  /**
+   * method2 method
+   *
+   * @param int $arg1
+   * @param string $arg2
+   *
+   * @return void
+   *
+   * @throws ExceptionType1
+   */
+  public function method2($arg1, $arg2) {
+    parent::__call('method2', func_get_args());
+  }
+
+}

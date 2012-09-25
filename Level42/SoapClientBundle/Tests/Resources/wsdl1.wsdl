@@ -1,0 +1,1453 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="AS400EndpointService" targetNamespace="http://as400.endpoint.groupemb.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://as400.endpoint.groupemb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://as400.endpoint.groupemb.com/" version="1.0" xmlns:tns="http://as400.endpoint.groupemb.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="convertirEnCommande" type="tns:convertirEnCommande"/>
+<xs:element name="convertirEnCommandeResponse" type="tns:convertirEnCommandeResponse"/>
+<xs:element name="creerAdresse" type="tns:creerAdresse"/>
+<xs:element name="creerAdresseExpress" type="tns:creerAdresseExpress"/>
+<xs:element name="creerAdresseExpressResponse" type="tns:creerAdresseExpressResponse"/>
+<xs:element name="creerAdresseResponse" type="tns:creerAdresseResponse"/>
+<xs:element name="creerClient" type="tns:creerClient"/>
+<xs:element name="creerClientExpress" type="tns:creerClientExpress"/>
+<xs:element name="creerClientExpressResponse" type="tns:creerClientExpressResponse"/>
+<xs:element name="creerClientResponse" type="tns:creerClientResponse"/>
+<xs:element name="dms" type="tns:listeArticleDM"/>
+<xs:element name="genererDevis" type="tns:genererDevis"/>
+<xs:element name="genererDevisResponse" type="tns:genererDevisResponse"/>
+<xs:element name="getAdresse" type="tns:getAdresse"/>
+<xs:element name="getAdresseResponse" type="tns:getAdresseResponse"/>
+<xs:element name="getAdresses" type="tns:getAdresses"/>
+<xs:element name="getAdressesFacturation" type="tns:getAdressesFacturation"/>
+<xs:element name="getAdressesFacturationResponse" type="tns:getAdressesFacturationResponse"/>
+<xs:element name="getAdressesLivraison" type="tns:getAdressesLivraison"/>
+<xs:element name="getAdressesLivraisonResponse" type="tns:getAdressesLivraisonResponse"/>
+<xs:element name="getAdressesResponse" type="tns:getAdressesResponse"/>
+<xs:element name="getAgences" type="tns:getAgences"/>
+<xs:element name="getAgencesByLocalisation" type="tns:getAgencesByLocalisation"/>
+<xs:element name="getAgencesByLocalisationResponse" type="tns:getAgencesByLocalisationResponse"/>
+<xs:element name="getAgencesResponse" type="tns:getAgencesResponse"/>
+<xs:element name="getClients" type="tns:getClients"/>
+<xs:element name="getClientsResponse" type="tns:getClientsResponse"/>
+<xs:element name="getDM" type="tns:getDM"/>
+<xs:element name="getDMResponse" type="tns:getDMResponse"/>
+<xs:element name="getDevis" type="tns:getDevis"/>
+<xs:element name="getDevisResponse" type="tns:getDevisResponse"/>
+<xs:element name="getEncoursClient" type="tns:getEncoursClient"/>
+<xs:element name="getEncoursClientResponse" type="tns:getEncoursClientResponse"/>
+<xs:element name="getInfoProduits" type="tns:getInfoProduits"/>
+<xs:element name="getInfoProduitsResponse" type="tns:getInfoProduitsResponse"/>
+<xs:element name="getInformationsAgenceDepot" type="tns:getInformationsAgenceDepot"/>
+<xs:element name="getInformationsAgenceDepotResponse" type="tns:getInformationsAgenceDepotResponse"/>
+<xs:element name="getInformationsListeAgenceDepot" type="tns:getInformationsListeAgenceDepot"/>
+<xs:element name="getInformationsListeAgenceDepotResponse" type="tns:getInformationsListeAgenceDepotResponse"/>
+<xs:element name="getPaniers" type="tns:getPaniers"/>
+<xs:element name="getPaniersResponse" type="tns:getPaniersResponse"/>
+<xs:element name="getTarifsDegressifs" type="tns:getTarifsDegressifs"/>
+<xs:element name="getTarifsDegressifsResponse" type="tns:getTarifsDegressifsResponse"/>
+<xs:element name="getTarifsEtStocks" type="tns:getTarifsEtStocks"/>
+<xs:element name="getTarifsEtStocksResponse" type="tns:getTarifsEtStocksResponse"/>
+<xs:element name="getUtilisateur" type="tns:getUtilisateur"/>
+<xs:element name="getUtilisateurResponse" type="tns:getUtilisateurResponse"/>
+<xs:element name="infos" type="tns:listeInfoProduits"/>
+<xs:element name="login" type="tns:login"/>
+<xs:element name="loginResponse" type="tns:loginResponse"/>
+<xs:element name="modifierAdresse" type="tns:modifierAdresse"/>
+<xs:element name="modifierAdresseResponse" type="tns:modifierAdresseResponse"/>
+<xs:element name="modifierClient" type="tns:modifierClient"/>
+<xs:element name="modifierClientResponse" type="tns:modifierClientResponse"/>
+<xs:element name="modifierLogin" type="tns:modifierLogin"/>
+<xs:element name="modifierLoginResponse" type="tns:modifierLoginResponse"/>
+<xs:element name="resetPassword" type="tns:resetPassword"/>
+<xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse"/>
+<xs:element name="supprimerAdresse" type="tns:supprimerAdresse"/>
+<xs:element name="supprimerAdresseResponse" type="tns:supprimerAdresseResponse"/>
+<xs:element name="supprimerClient" type="tns:supprimerClient"/>
+<xs:element name="supprimerClientResponse" type="tns:supprimerClientResponse"/>
+<xs:complexType name="getDevis">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getDevisResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="devis" type="tns:listeDevis"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listeDevis">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="devis" nillable="true" type="tns:devis"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="devis">
+<xs:sequence>
+<xs:element minOccurs="0" name="codeDevis" type="xs:string"/>
+<xs:element minOccurs="0" name="dateDebut" type="xs:string"/>
+<xs:element minOccurs="0" name="dateFin" type="xs:string"/>
+<xs:element minOccurs="0" name="libelle" type="xs:string"/>
+<xs:element minOccurs="0" name="conversion" type="xs:boolean"/>
+<xs:element minOccurs="0" name="generation" type="xs:boolean"/>
+<xs:element minOccurs="0" name="tcs" type="xs:string"/>
+<xs:element minOccurs="0" name="telephone" type="xs:string"/>
+<xs:element minOccurs="0" name="dateCommande" type="xs:string"/>
+<xs:element minOccurs="0" name="validiteOffre" type="xs:string"/>
+<xs:element minOccurs="0" name="agenceTCS" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAgencesByLocalisation">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="codePostal" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAgencesByLocalisationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="agences" type="tns:listeAgence"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listeAgence">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="agences" nillable="true" type="tns:agence"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agence">
+<xs:sequence>
+<xs:element minOccurs="0" name="codeAgence" type="xs:string"/>
+<xs:element minOccurs="0" name="libelleAgence" type="xs:string"/>
+<xs:element minOccurs="0" name="adresse" type="xs:string"/>
+<xs:element minOccurs="0" name="codePostal" type="xs:string"/>
+<xs:element minOccurs="0" name="codeSecteurGeo" type="xs:string"/>
+<xs:element minOccurs="0" name="codeRegion" type="xs:string"/>
+<xs:element minOccurs="0" name="ville" type="xs:string"/>
+<xs:element minOccurs="0" name="telephone" type="xs:string"/>
+<xs:element minOccurs="0" name="horaireOuverture" type="xs:string"/>
+<xs:element minOccurs="0" name="horaires" type="xs:string"/>
+<xs:element minOccurs="0" name="heureLimite" type="xs:string"/>
+<xs:element minOccurs="0" name="numTri" type="xs:string"/>
+<xs:element minOccurs="0" name="longitude" type="xs:string"/>
+<xs:element minOccurs="0" name="latitude" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="login">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="email" type="xs:string"/>
+<xs:element name="password" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="loginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="client" type="tns:client"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="client">
+<xs:sequence>
+<xs:element minOccurs="0" name="code" type="xs:string"/>
+<xs:element minOccurs="0" name="nom" type="xs:string"/>
+<xs:element minOccurs="0" name="prenom" type="xs:string"/>
+<xs:element minOccurs="0" name="email" type="xs:string"/>
+<xs:element minOccurs="0" name="motDePasse" type="xs:string"/>
+<xs:element minOccurs="0" name="dateCreation" type="xs:string"/>
+<xs:element minOccurs="0" name="dateModification" type="xs:string"/>
+<xs:element minOccurs="0" name="raisonSociale" type="xs:string"/>
+<xs:element minOccurs="0" name="complementRaisonSociale" type="xs:string"/>
+<xs:element minOccurs="0" name="role" type="xs:string"/>
+<xs:element minOccurs="0" name="type" type="xs:string"/>
+<xs:element minOccurs="0" name="telephone" type="xs:string"/>
+<xs:element minOccurs="0" name="fax" type="xs:string"/>
+<xs:element minOccurs="0" name="mobile" type="xs:string"/>
+<xs:element minOccurs="0" name="fonction" type="xs:string"/>
+<xs:element minOccurs="0" name="codeSiren" type="xs:string"/>
+<xs:element minOccurs="0" name="codeNAF" type="xs:string"/>
+<xs:element minOccurs="0" name="activite" type="xs:string"/>
+<xs:element minOccurs="0" name="formeJuridique" type="xs:string"/>
+<xs:element minOccurs="0" name="effectif" type="xs:string"/>
+<xs:element minOccurs="0" name="ca" type="xs:string"/>
+<xs:element minOccurs="0" name="commissions" type="xs:string"/>
+<xs:element minOccurs="0" name="connaissance" type="xs:string"/>
+<xs:element minOccurs="0" name="codeSocieteFacturation" type="xs:string"/>
+<xs:element minOccurs="0" name="codeAgenceFacturation" type="xs:string"/>
+<xs:element minOccurs="0" name="codeSocieteLivraison" type="xs:string"/>
+<xs:element minOccurs="0" name="codeAgenceLivraison" type="xs:string"/>
+<xs:element minOccurs="0" name="codeEnseigne" type="xs:string"/>
+<xs:element minOccurs="0" name="libelleEnseigne" type="xs:string"/>
+<xs:element minOccurs="0" name="modeUrgent1" type="xs:string"/>
+<xs:element minOccurs="0" name="modeUrgent2" type="xs:string"/>
+<xs:element minOccurs="0" name="sousBoutique" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="modeLivraison" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="modeTransport" nillable="true" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="modeCodep" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="jourLivraison" type="xs:string"/>
+<xs:element minOccurs="0" name="heureLimite" type="xs:string"/>
+<xs:element minOccurs="0" name="codeTCS" type="xs:string"/>
+<xs:element minOccurs="0" name="numeroCommandeObligatoire" type="xs:boolean"/>
+<xs:element minOccurs="0" name="changementMotDePasse" type="xs:boolean"/>
+<xs:element minOccurs="0" name="controleEncours" type="xs:boolean"/>
+<xs:element minOccurs="0" name="cUserId" type="xs:string"/>
+<xs:element minOccurs="0" name="comparioCodeClient" type="xs:string"/>
+<xs:element minOccurs="0" name="loginCompario" type="xs:string"/>
+<xs:element minOccurs="0" name="groupe" type="xs:string"/>
+<xs:element minOccurs="0" name="modeClassique" type="xs:string"/>
+<xs:element minOccurs="0" name="tarifPro" type="xs:string"/>
+<xs:element minOccurs="0" name="nouveauMotDePasse" type="xs:string"/>
+<xs:element minOccurs="0" name="nouvelEmail" type="xs:string"/>
+<xs:element minOccurs="0" name="agenceRattachement" type="tns:agence"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="supprimerClient">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="email" type="xs:string"/>
+<xs:element name="password" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="supprimerClientResponse">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="modifierAdresse">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="adresse" type="tns:adresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="adresse">
+<xs:sequence>
+<xs:element minOccurs="0" name="code" type="xs:string"/>
+<xs:element minOccurs="0" name="codeClient" type="xs:string"/>
+<xs:element minOccurs="0" name="raisonSociale" type="xs:string"/>
+<xs:element minOccurs="0" name="complementRaisonSociale" type="xs:string"/>
+<xs:element minOccurs="0" name="rue" type="xs:string"/>
+<xs:element minOccurs="0" name="rue2" type="xs:string"/>
+<xs:element minOccurs="0" name="ville" type="xs:string"/>
+<xs:element minOccurs="0" name="codePostal" type="xs:string"/>
+<xs:element minOccurs="0" name="codePays" type="xs:string"/>
+<xs:element minOccurs="0" name="telephone" type="xs:string"/>
+<xs:element minOccurs="0" name="fax" type="xs:string"/>
+<xs:element minOccurs="0" name="mobile" type="xs:string"/>
+<xs:element minOccurs="0" name="mail" type="xs:string"/>
+<xs:element minOccurs="0" name="facturation" type="xs:boolean"/>
+<xs:element minOccurs="0" name="livraison" type="xs:boolean"/>
+<xs:element minOccurs="0" name="defaut" type="xs:boolean"/>
+<xs:element minOccurs="0" name="type" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="modifierAdresseResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="adresse" type="tns:listeAdresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listeAdresse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="adresse" type="tns:adresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="modifierLogin">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="email" type="xs:string"/>
+<xs:element name="password" type="xs:string"/>
+<xs:element minOccurs="0" name="codePostal" type="xs:string"/>
+<xs:element minOccurs="0" name="numeroAdresse" type="xs:string"/>
+<xs:element minOccurs="0" name="ville" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="modeLivraison" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="modifierLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="client" type="tns:client"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="creerClientExpress">
+<xs:sequence>
+<xs:element name="client" type="tns:client"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="creerClientExpressResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="client" type="tns:listeClient"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listeClient">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="client" type="tns:client"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAdresse">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="codeAdresse" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAdresseResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="adresse" type="tns:adresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAdresses">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAdressesResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="adresses" type="tns:listeAdresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getInformationsListeAgenceDepot">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="depotRequest" type="tns:depotRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="depotRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="codeDepot" type="xs:string"/>
+<xs:element minOccurs="0" name="codeSociete" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getInformationsListeAgenceDepotResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="getInformationsListeAgenceDepotResponse" type="tns:listeAgenceDepot"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listeAgenceDepot">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="agenceDepot" nillable="true" type="tns:agenceDepot"/>
+<xs:element minOccurs="0" name="nbDepots" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agenceDepot">
+<xs:sequence>
+<xs:element minOccurs="0" name="codeAgence" type="xs:string"/>
+<xs:element minOccurs="0" name="libelleAgence" type="xs:string"/>
+<xs:element minOccurs="0" name="codeDepot" type="xs:string"/>
+<xs:element minOccurs="0" name="libelleDepot" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAgences">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAgencesResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="agences" type="tns:listeAgence"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getInfoProduits">
+<xs:sequence>
+<xs:element name="codeSocieteFacturation" type="xs:string"/>
+<xs:element name="codeAgenceFacturation" type="xs:string"/>
+<xs:element name="codeSocieteLivraison" type="xs:string"/>
+<xs:element name="codeDepotLivraison" type="xs:string"/>
+<xs:element name="identifiant" type="xs:string"/>
+<xs:element minOccurs="0" name="codeClient" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="infoProduitsRequest" type="tns:infoProduitRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="infoProduitRequest">
+<xs:sequence>
+<xs:element name="codeArticle" type="xs:string"/>
+<xs:element name="quantite" type="xs:double"/>
+<xs:element minOccurs="0" name="dateStock" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getInfoProduitsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="getInfoProduitsResponse" type="tns:listeInfoProduits"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listeInfoProduits">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="info" type="tns:infoProduit"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="infoProduit">
+<xs:sequence>
+<xs:element minOccurs="0" name="codeArticle" type="xs:string"/>
+<xs:element minOccurs="0" name="tarifCatalogue" type="xs:double"/>
+<xs:element minOccurs="0" name="tarifNet" type="xs:double"/>
+<xs:element minOccurs="0" name="explication" type="xs:string"/>
+<xs:element minOccurs="0" name="codeRemise" type="xs:string"/>
+<xs:element minOccurs="0" name="codeUF" type="xs:string"/>
+<xs:element minOccurs="0" name="libelleUF" type="xs:string"/>
+<xs:element minOccurs="0" name="valorisationUV" type="xs:string"/>
+<xs:element minOccurs="0" name="valeurHT" type="xs:double"/>
+<xs:element minOccurs="0" name="tauxTVA" type="xs:double"/>
+<xs:element minOccurs="0" name="tauxMarge" type="xs:double"/>
+<xs:element minOccurs="0" name="montantMarge" type="xs:double"/>
+<xs:element minOccurs="0" name="qteStock" type="xs:double"/>
+<xs:element minOccurs="0" name="codeSocieteLiv" type="xs:string"/>
+<xs:element minOccurs="0" name="codeDepotLiv" type="xs:string"/>
+<xs:element minOccurs="0" name="etatStock" type="xs:string"/>
+<xs:element minOccurs="0" name="dateDispo" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTarifsDegressifs">
+<xs:sequence>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="codeSocieteFacturation" type="xs:string"/>
+<xs:element name="codeAgenceFacturation" type="xs:string"/>
+<xs:element name="codeSocieteLivraison" type="xs:string"/>
+<xs:element name="codeDepotLivraison" type="xs:string"/>
+<xs:element name="codeArticle" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTarifsDegressifsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:listeTarif"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listeTarif">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="tarif" type="tns:tarif"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="tarif">
+<xs:sequence>
+<xs:element minOccurs="0" name="tarifNet" type="xs:double"/>
+<xs:element minOccurs="0" name="libelle" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="creerClient">
+<xs:sequence>
+<xs:element name="client" type="tns:client"/>
+<xs:element minOccurs="0" name="adresse" type="tns:adresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="creerClientResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="client" type="tns:listeClient"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAdressesLivraison">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAdressesLivraisonResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="adresses" type="tns:listeAdresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAdressesFacturation">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAdressesFacturationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="adresses" type="tns:listeAdresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getUtilisateur">
+<xs:sequence>
+<xs:element name="identifiant" type="xs:string"/>
+<xs:element name="motdepasse" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getUtilisateurResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="getUtilisateurResponse" type="tns:utilisateur"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="utilisateur">
+<xs:sequence>
+<xs:element minOccurs="0" name="identifiant" type="xs:string"/>
+<xs:element minOccurs="0" name="motdepasse" type="xs:string"/>
+<xs:element minOccurs="0" name="nom" type="xs:string"/>
+<xs:element minOccurs="0" name="prenom" type="xs:string"/>
+<xs:element minOccurs="0" name="initiales" type="xs:string"/>
+<xs:element minOccurs="0" name="mail" type="xs:string"/>
+<xs:element minOccurs="0" name="telephone" type="xs:string"/>
+<xs:element minOccurs="0" name="mailRPC" type="xs:string"/>
+<xs:element minOccurs="0" name="nomRPC" type="xs:string"/>
+<xs:element minOccurs="0" name="telephoneRPC" type="xs:string"/>
+<xs:element minOccurs="0" name="societes">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="societe" type="tns:societe"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="societe">
+<xs:sequence>
+<xs:element minOccurs="0" name="codeAgenceFacturation" type="xs:string"/>
+<xs:element minOccurs="0" name="codeDepotLivraison" type="xs:string"/>
+<xs:element minOccurs="0" name="codeSocieteFacturation" type="xs:string"/>
+<xs:element minOccurs="0" name="codeSocieteLivraison" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="depots" nillable="true" type="tns:agenceDepot"/>
+<xs:element minOccurs="0" name="droitCommandeAS400" type="xs:boolean"/>
+<xs:element minOccurs="0" name="droitDerogationPlanVente" type="xs:boolean"/>
+<xs:element minOccurs="0" name="droitOffreAS400" type="xs:boolean"/>
+<xs:element minOccurs="0" name="droitSaisiePanier" type="xs:boolean"/>
+<xs:element minOccurs="0" name="droitTauxMarge" type="xs:boolean"/>
+<xs:element minOccurs="0" name="grandCompte" type="xs:boolean"/>
+<xs:element minOccurs="0" name="libelleAgenceFacturation" type="xs:string"/>
+<xs:element minOccurs="0" name="libelleDepotLivraison" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTarifsEtStocks">
+<xs:sequence>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="codeSocieteFacturation" type="xs:string"/>
+<xs:element name="codeAgenceFacturation" type="xs:string"/>
+<xs:element name="codeSocieteLivraison" type="xs:string"/>
+<xs:element name="codeDepotLivraison" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="produits" type="tns:infoProduitRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTarifsEtStocksResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:listeTarifStock"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listeTarifStock">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="tarif" type="tns:tarifStock"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="tarifStock">
+<xs:sequence>
+<xs:element minOccurs="0" name="codeArticle" type="xs:string"/>
+<xs:element minOccurs="0" name="tarifCatalogue" type="xs:double"/>
+<xs:element minOccurs="0" name="tarifNet" type="xs:double"/>
+<xs:element minOccurs="0" name="explicationPrix" type="xs:string"/>
+<xs:element minOccurs="0" name="codeRemise" type="xs:string"/>
+<xs:element minOccurs="0" name="codeUniteFacturation" type="xs:string"/>
+<xs:element minOccurs="0" name="libelleUniteFacturation" type="xs:string"/>
+<xs:element minOccurs="0" name="valorisationUniteVente" type="xs:string"/>
+<xs:element minOccurs="0" name="valeurLigneHT" type="xs:double"/>
+<xs:element minOccurs="0" name="tauxTVA" type="xs:double"/>
+<xs:element minOccurs="0" name="tauxMarge" type="xs:double"/>
+<xs:element minOccurs="0" name="montantMarge" type="xs:double"/>
+<xs:element minOccurs="0" name="quantiteStock" type="xs:double"/>
+<xs:element minOccurs="0" name="quantite" type="xs:double"/>
+<xs:element minOccurs="0" name="codeSocieteLivraison" type="xs:string"/>
+<xs:element minOccurs="0" name="codeDepotLivraison" type="xs:string"/>
+<xs:element minOccurs="0" name="etatStock" type="xs:string"/>
+<xs:element minOccurs="0" name="valeurHTReliquat" type="xs:double"/>
+<xs:element minOccurs="0" name="libelleDispo" type="xs:string"/>
+<xs:element minOccurs="0" name="dateDispo" type="xs:string"/>
+<xs:element minOccurs="0" name="montantEcoParticipation" type="xs:double"/>
+<xs:element minOccurs="0" name="libelleUniteVente" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getEncoursClient">
+<xs:sequence>
+<xs:element name="codeSocieteFacturation" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getEncoursClientResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="getEncoursClientResponse" type="tns:encoursClient"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="encoursClient">
+<xs:sequence>
+<xs:element minOccurs="0" name="codeClient" type="xs:string"/>
+<xs:element minOccurs="0" name="totalEncours" type="xs:double"/>
+<xs:element minOccurs="0" name="montantEncours" type="xs:double"/>
+<xs:element minOccurs="0" name="etatEncours" type="xs:string"/>
+<xs:element minOccurs="0" name="codeIndex" type="xs:string"/>
+<xs:element minOccurs="0" name="libelleIndex" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getClients">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="email" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getClientsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:listeClient"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="modifierClient">
+<xs:sequence>
+<xs:element name="email" type="xs:string"/>
+<xs:element name="password" type="xs:string"/>
+<xs:element name="client" type="tns:client"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="modifierClientResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="client" type="tns:listeClient"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="convertirEnCommande">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="codeDevis" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="convertirEnCommandeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="devis" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="resetPassword">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="email" type="xs:string"/>
+<xs:element name="password" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="resetPasswordResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="client" type="tns:listeClient"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPaniers">
+<xs:sequence>
+<xs:element name="codeAgenceFacturation" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="codeDepotLivraison" type="xs:string"/>
+<xs:element name="codeSocieteFacturation" type="xs:string"/>
+<xs:element name="codeSocieteLivraison" type="xs:string"/>
+<xs:element name="dateListe1" type="xs:string"/>
+<xs:element name="dateListe2" type="xs:string"/>
+<xs:element minOccurs="0" name="modePanier" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="produits1" type="tns:infoProduitRequest"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="produits2" type="tns:infoProduitRequest"/>
+<xs:element minOccurs="0" name="modeTransport" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPaniersResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:listePanier"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listePanier">
+<xs:sequence>
+<xs:element minOccurs="0" name="controleEncours" type="xs:boolean"/>
+<xs:element minOccurs="0" name="nbArticle1" type="xs:int"/>
+<xs:element minOccurs="0" name="nbArticle2" type="xs:int"/>
+<xs:element minOccurs="0" name="panier1" type="tns:panier"/>
+<xs:element minOccurs="0" name="panier2" type="tns:panier"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="panier">
+<xs:sequence>
+<xs:element minOccurs="0" name="fraisFixes" type="xs:double"/>
+<xs:element minOccurs="0" name="fraisPort" type="xs:double"/>
+<xs:element minOccurs="0" name="fraisPortUrgent" type="xs:double"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="modesExpedition" type="xs:string"/>
+<xs:element minOccurs="0" name="montantEcoTaxe" type="xs:double"/>
+<xs:element minOccurs="0" name="montantFranco" type="xs:double"/>
+<xs:element minOccurs="0" name="montantFrancoUrgent" type="xs:double"/>
+<xs:element minOccurs="0" name="montantTTC" type="xs:double"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="listeTVA" nillable="true" type="tns:taxe"/>
+<xs:element minOccurs="0" name="montantTVAPanier" type="xs:double"/>
+<xs:element minOccurs="0" name="montantHTMarchandises" type="xs:double"/>
+<xs:element minOccurs="0" name="valeurHT" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="taxe">
+<xs:sequence>
+<xs:element minOccurs="0" name="tauxTVA" type="xs:double"/>
+<xs:element minOccurs="0" name="montantTVA" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="creerAdresse">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="adresse" type="tns:adresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="creerAdresseResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="adresse" type="tns:listeAdresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="creerAdresseExpress">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="adresse" type="tns:adresse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="creerAdresseExpressResponse">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="genererDevis">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="codeDevis" type="xs:string"/>
+<xs:element name="email" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="genererDevisResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="devis" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getInformationsAgenceDepot">
+<xs:sequence>
+<xs:element name="codeSocieteFacturation" type="xs:string"/>
+<xs:element name="codeAgenceFacturation" type="xs:string"/>
+<xs:element name="codeSocieteLivraison" type="xs:string"/>
+<xs:element name="codeDepotLivraison" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getInformationsAgenceDepotResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="getInformationsAgenceDepotResponse" type="tns:agenceDepot"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="supprimerAdresse">
+<xs:sequence>
+<xs:element name="codeSociete" type="xs:string"/>
+<xs:element name="codeClient" type="xs:string"/>
+<xs:element name="codeAdresse" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="supprimerAdresseResponse">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getDM">
+<xs:sequence>
+<xs:element name="codeSocieteFacturation" type="xs:string"/>
+<xs:element name="codeNomenclature" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getDMResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="getDMResponse" type="tns:listeArticleDM"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listeArticleDM">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="dm" type="tns:articleDM"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="articleDM">
+<xs:sequence>
+<xs:element minOccurs="0" name="codeArticle" type="xs:string"/>
+<xs:element minOccurs="0" name="libelleArticle" type="xs:string"/>
+<xs:element minOccurs="0" name="codeUF" type="xs:string"/>
+<xs:element minOccurs="0" name="refFrs" type="xs:string"/>
+<xs:element minOccurs="0" name="codeFrs" type="xs:string"/>
+<xs:element minOccurs="0" name="motDirecteur" type="xs:string"/>
+<xs:element minOccurs="0" name="frsObligatoire" type="xs:boolean"/>
+<xs:element minOccurs="0" name="qteDecimal" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="modifierAdresse">
+    <wsdl:part element="tns:modifierAdresse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDevis">
+    <wsdl:part element="tns:getDevis" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="convertirEnCommande">
+    <wsdl:part element="tns:convertirEnCommande" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAdresses">
+    <wsdl:part element="tns:getAdresses" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="genererDevis">
+    <wsdl:part element="tns:genererDevis" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDMResponse">
+    <wsdl:part element="tns:getDMResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilisateur">
+    <wsdl:part element="tns:getUtilisateur" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifierLogin">
+    <wsdl:part element="tns:modifierLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerAdresseExpressResponse">
+    <wsdl:part element="tns:creerAdresseExpressResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgencesByLocalisation">
+    <wsdl:part element="tns:getAgencesByLocalisation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerClient">
+    <wsdl:part element="tns:creerClient" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="genererDevisResponse">
+    <wsdl:part element="tns:genererDevisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="supprimerClientResponse">
+    <wsdl:part element="tns:supprimerClientResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClients">
+    <wsdl:part element="tns:getClients" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTarifsDegressifs">
+    <wsdl:part element="tns:getTarifsDegressifs" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEncoursClient">
+    <wsdl:part element="tns:getEncoursClient" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInfoProduits">
+    <wsdl:part element="tns:getInfoProduits" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClientsResponse">
+    <wsdl:part element="tns:getClientsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgencesByLocalisationResponse">
+    <wsdl:part element="tns:getAgencesByLocalisationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgencesResponse">
+    <wsdl:part element="tns:getAgencesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="login">
+    <wsdl:part element="tns:login" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilisateurResponse">
+    <wsdl:part element="tns:getUtilisateurResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgences">
+    <wsdl:part element="tns:getAgences" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetPasswordResponse">
+    <wsdl:part element="tns:resetPasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAdresse">
+    <wsdl:part element="tns:getAdresse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="supprimerAdresse">
+    <wsdl:part element="tns:supprimerAdresse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerAdresseExpress">
+    <wsdl:part element="tns:creerAdresseExpress" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEncoursClientResponse">
+    <wsdl:part element="tns:getEncoursClientResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifierLoginResponse">
+    <wsdl:part element="tns:modifierLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInformationsListeAgenceDepotResponse">
+    <wsdl:part element="tns:getInformationsListeAgenceDepotResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPaniers">
+    <wsdl:part element="tns:getPaniers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAdresseResponse">
+    <wsdl:part element="tns:getAdresseResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifierClientResponse">
+    <wsdl:part element="tns:modifierClientResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="supprimerAdresseResponse">
+    <wsdl:part element="tns:supprimerAdresseResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTarifsDegressifsResponse">
+    <wsdl:part element="tns:getTarifsDegressifsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerClientResponse">
+    <wsdl:part element="tns:creerClientResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAdressesResponse">
+    <wsdl:part element="tns:getAdressesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part element="tns:loginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerClientExpressResponse">
+    <wsdl:part element="tns:creerClientExpressResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInformationsAgenceDepotResponse">
+    <wsdl:part element="tns:getInformationsAgenceDepotResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="supprimerClient">
+    <wsdl:part element="tns:supprimerClient" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAdressesFacturationResponse">
+    <wsdl:part element="tns:getAdressesFacturationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAdressesLivraison">
+    <wsdl:part element="tns:getAdressesLivraison" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerAdresse">
+    <wsdl:part element="tns:creerAdresse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTarifsEtStocksResponse">
+    <wsdl:part element="tns:getTarifsEtStocksResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPaniersResponse">
+    <wsdl:part element="tns:getPaniersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInformationsListeAgenceDepot">
+    <wsdl:part element="tns:getInformationsListeAgenceDepot" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerAdresseResponse">
+    <wsdl:part element="tns:creerAdresseResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAdressesFacturation">
+    <wsdl:part element="tns:getAdressesFacturation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDM">
+    <wsdl:part element="tns:getDM" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerClientExpress">
+    <wsdl:part element="tns:creerClientExpress" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetPassword">
+    <wsdl:part element="tns:resetPassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDevisResponse">
+    <wsdl:part element="tns:getDevisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAdressesLivraisonResponse">
+    <wsdl:part element="tns:getAdressesLivraisonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTarifsEtStocks">
+    <wsdl:part element="tns:getTarifsEtStocks" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInfoProduitsResponse">
+    <wsdl:part element="tns:getInfoProduitsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInformationsAgenceDepot">
+    <wsdl:part element="tns:getInformationsAgenceDepot" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifierAdresseResponse">
+    <wsdl:part element="tns:modifierAdresseResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="convertirEnCommandeResponse">
+    <wsdl:part element="tns:convertirEnCommandeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifierClient">
+    <wsdl:part element="tns:modifierClient" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AS400Endpoint">
+    <wsdl:operation name="getDevis">
+      <wsdl:input message="tns:getDevis" name="getDevis">
+    </wsdl:input>
+      <wsdl:output message="tns:getDevisResponse" name="getDevisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAgencesByLocalisation">
+      <wsdl:input message="tns:getAgencesByLocalisation" name="getAgencesByLocalisation">
+    </wsdl:input>
+      <wsdl:output message="tns:getAgencesByLocalisationResponse" name="getAgencesByLocalisationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdl:input message="tns:login" name="login">
+    </wsdl:input>
+      <wsdl:output message="tns:loginResponse" name="loginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerClient">
+      <wsdl:input message="tns:supprimerClient" name="supprimerClient">
+    </wsdl:input>
+      <wsdl:output message="tns:supprimerClientResponse" name="supprimerClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifierAdresse">
+      <wsdl:input message="tns:modifierAdresse" name="modifierAdresse">
+    </wsdl:input>
+      <wsdl:output message="tns:modifierAdresseResponse" name="modifierAdresseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifierLogin">
+      <wsdl:input message="tns:modifierLogin" name="modifierLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:modifierLoginResponse" name="modifierLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerClientExpress">
+      <wsdl:input message="tns:creerClientExpress" name="creerClientExpress">
+    </wsdl:input>
+      <wsdl:output message="tns:creerClientExpressResponse" name="creerClientExpressResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAdresse">
+      <wsdl:input message="tns:getAdresse" name="getAdresse">
+    </wsdl:input>
+      <wsdl:output message="tns:getAdresseResponse" name="getAdresseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAdresses">
+      <wsdl:input message="tns:getAdresses" name="getAdresses">
+    </wsdl:input>
+      <wsdl:output message="tns:getAdressesResponse" name="getAdressesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInformationsListeAgenceDepot">
+      <wsdl:input message="tns:getInformationsListeAgenceDepot" name="getInformationsListeAgenceDepot">
+    </wsdl:input>
+      <wsdl:output message="tns:getInformationsListeAgenceDepotResponse" name="getInformationsListeAgenceDepotResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAgences">
+      <wsdl:input message="tns:getAgences" name="getAgences">
+    </wsdl:input>
+      <wsdl:output message="tns:getAgencesResponse" name="getAgencesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoProduits">
+      <wsdl:input message="tns:getInfoProduits" name="getInfoProduits">
+    </wsdl:input>
+      <wsdl:output message="tns:getInfoProduitsResponse" name="getInfoProduitsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTarifsDegressifs">
+      <wsdl:input message="tns:getTarifsDegressifs" name="getTarifsDegressifs">
+    </wsdl:input>
+      <wsdl:output message="tns:getTarifsDegressifsResponse" name="getTarifsDegressifsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerClient">
+      <wsdl:input message="tns:creerClient" name="creerClient">
+    </wsdl:input>
+      <wsdl:output message="tns:creerClientResponse" name="creerClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAdressesLivraison">
+      <wsdl:input message="tns:getAdressesLivraison" name="getAdressesLivraison">
+    </wsdl:input>
+      <wsdl:output message="tns:getAdressesLivraisonResponse" name="getAdressesLivraisonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAdressesFacturation">
+      <wsdl:input message="tns:getAdressesFacturation" name="getAdressesFacturation">
+    </wsdl:input>
+      <wsdl:output message="tns:getAdressesFacturationResponse" name="getAdressesFacturationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilisateur">
+      <wsdl:input message="tns:getUtilisateur" name="getUtilisateur">
+    </wsdl:input>
+      <wsdl:output message="tns:getUtilisateurResponse" name="getUtilisateurResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTarifsEtStocks">
+      <wsdl:input message="tns:getTarifsEtStocks" name="getTarifsEtStocks">
+    </wsdl:input>
+      <wsdl:output message="tns:getTarifsEtStocksResponse" name="getTarifsEtStocksResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEncoursClient">
+      <wsdl:input message="tns:getEncoursClient" name="getEncoursClient">
+    </wsdl:input>
+      <wsdl:output message="tns:getEncoursClientResponse" name="getEncoursClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClients">
+      <wsdl:input message="tns:getClients" name="getClients">
+    </wsdl:input>
+      <wsdl:output message="tns:getClientsResponse" name="getClientsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifierClient">
+      <wsdl:input message="tns:modifierClient" name="modifierClient">
+    </wsdl:input>
+      <wsdl:output message="tns:modifierClientResponse" name="modifierClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="convertirEnCommande">
+      <wsdl:input message="tns:convertirEnCommande" name="convertirEnCommande">
+    </wsdl:input>
+      <wsdl:output message="tns:convertirEnCommandeResponse" name="convertirEnCommandeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resetPassword">
+      <wsdl:input message="tns:resetPassword" name="resetPassword">
+    </wsdl:input>
+      <wsdl:output message="tns:resetPasswordResponse" name="resetPasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaniers">
+      <wsdl:input message="tns:getPaniers" name="getPaniers">
+    </wsdl:input>
+      <wsdl:output message="tns:getPaniersResponse" name="getPaniersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerAdresse">
+      <wsdl:input message="tns:creerAdresse" name="creerAdresse">
+    </wsdl:input>
+      <wsdl:output message="tns:creerAdresseResponse" name="creerAdresseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerAdresseExpress">
+      <wsdl:input message="tns:creerAdresseExpress" name="creerAdresseExpress">
+    </wsdl:input>
+      <wsdl:output message="tns:creerAdresseExpressResponse" name="creerAdresseExpressResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="genererDevis">
+      <wsdl:input message="tns:genererDevis" name="genererDevis">
+    </wsdl:input>
+      <wsdl:output message="tns:genererDevisResponse" name="genererDevisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInformationsAgenceDepot">
+      <wsdl:input message="tns:getInformationsAgenceDepot" name="getInformationsAgenceDepot">
+    </wsdl:input>
+      <wsdl:output message="tns:getInformationsAgenceDepotResponse" name="getInformationsAgenceDepotResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerAdresse">
+      <wsdl:input message="tns:supprimerAdresse" name="supprimerAdresse">
+    </wsdl:input>
+      <wsdl:output message="tns:supprimerAdresseResponse" name="supprimerAdresseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDM">
+      <wsdl:input message="tns:getDM" name="getDM">
+    </wsdl:input>
+      <wsdl:output message="tns:getDMResponse" name="getDMResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AS400EndpointServiceSoapBinding" type="tns:AS400Endpoint">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getDevis">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDevis">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDevisResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAgencesByLocalisation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAgencesByLocalisation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAgencesByLocalisationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="login">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerClient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="supprimerClient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="supprimerClientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifierAdresse">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="modifierAdresse">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifierAdresseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerClientExpress">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerClientExpress">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerClientExpressResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifierLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="modifierLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifierLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAdresse">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAdresse">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAdresseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAdresses">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAdresses">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAdressesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInformationsListeAgenceDepot">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInformationsListeAgenceDepot">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInformationsListeAgenceDepotResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAgences">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAgences">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAgencesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoProduits">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInfoProduits">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInfoProduitsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTarifsDegressifs">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTarifsDegressifs">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTarifsDegressifsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerClient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerClient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerClientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAdressesLivraison">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAdressesLivraison">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAdressesLivraisonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAdressesFacturation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAdressesFacturation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAdressesFacturationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUtilisateur">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTarifsEtStocks">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTarifsEtStocks">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTarifsEtStocksResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEncoursClient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEncoursClient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEncoursClientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClients">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getClients">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getClientsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="convertirEnCommande">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="convertirEnCommande">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertirEnCommandeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifierClient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="modifierClient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifierClientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resetPassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="resetPassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="resetPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaniers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPaniers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPaniersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerAdresse">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerAdresse">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerAdresseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerAdresseExpress">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerAdresseExpress">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerAdresseExpressResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="genererDevis">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="genererDevis">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="genererDevisResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInformationsAgenceDepot">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInformationsAgenceDepot">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInformationsAgenceDepotResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDM">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDM">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDMResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerAdresse">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="supprimerAdresse">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="supprimerAdresseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AS400EndpointService">
+    <wsdl:port binding="tns:AS400EndpointServiceSoapBinding" name="AS400EndpointPort">
+      <soap:address location="http://mb.sqli.com:9001/esb/as400/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
